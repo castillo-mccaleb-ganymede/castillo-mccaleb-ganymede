@@ -94,12 +94,20 @@ footer{
     body {
         box-sizing: border-box;
         display: grid;
+        height: 100vh;
+        width:100vw;
+        grid-template-columns: 60% 40%;
+        grid-template-rows: 10vh 40vh 40vh 10vh;
         grid-template-areas:
                 "heading nav-links"
                 "picture picture"
                 "main    sub"
                 "footer footer";
         grid-gap: 2em;
+        margin:0;
+        padding:0;
+
+
     }
 
     .alert-info {
@@ -136,6 +144,9 @@ footer{
 
     .header-img {
         grid-area: picture;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
     }
 
     .header-img>img {
@@ -144,14 +155,30 @@ footer{
     }
 
     .main {
+        display: flex;
+        justify-content: flex-start;
+        align-content: flex-start;
         grid-area: main;
     }
 
     .sub-section {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
         grid-area: sub;
     }
 
     footer {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
         grid-area: footer;
+
     }
+    h2{
+        margin:0;
+    }
+
+
+
 }
