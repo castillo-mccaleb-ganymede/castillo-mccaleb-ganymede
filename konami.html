@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Konami Code</title>
+        <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/tree.css">
+    </head>
+    <body>
+    <header class="sky">
+        <div class="sun"></div>
+        <div class="cloud-1"></div>
+        <div class="cloud-2"></div>
+    </header>
+    <main class="mother-nature">
+        <div class="key">
+            <ul>
+                <li class="listOne">UP x2 </li>
+                <li>DOWN x2</li>
+                <li>LEFT x2</li>
+                <li>RIGHT x2</li>
+                <li>B</li>
+                <li>A</li>
+                <li>RETURN</li>
+            </ul>
+        </div>
+        <div class="tree">
+            <div class="leaves"></div>
+            <div class="trunk">
+                <div class="tree-knot"></div>
+            </div>
+        </div>
+        <div></div>
+    </main>
+    <footer class="earth"></footer>
+
+    <script src="js/jquery-2.2.4.js"></script>
+    <script>
+        "use strict";
+
+        var bucket = [];
+        let lastKeyTime = Date.now();
+        console.log(lastKeyTime);
+
+        //could not figure out how to compare the bucket object with this one
+        var konamiCode = ['arrowup', 'arrowdown', 'arrowleft', 'arrowright', 'b', 'a', 'enter'];
+
+        $(document).keydown(function(event){
+
+            const currentTime = Date.now();
+            console.log(currentTime);
+
+            if (currentTime - lastKeyTime > 2000) {
+                bucket = [];
+            }
+
+            bucket.push(event.key.toLowerCase());
+
+            lastKeyTime = currentTime;
+
+            // console.log(bucket);
+
+            codeComplete();
+        });
+
+        function codeComplete() {
+            if(bucket[0] === 'arrowup'
+                &&
+                bucket[1] === 'arrowup'
+                &&
+                bucket[2] === 'arrowdown'
+                &&
+                bucket[3] === 'arrowdown'
+                &&
+                bucket[4] === 'arrowleft'
+                &&
+                bucket[5] === 'arrowleft'
+                &&
+                bucket[6] === 'arrowright'
+                &&
+                bucket[7] === 'arrowright'
+                &&
+                bucket[8] === 'b'
+                &&
+                bucket[9] === 'a'
+                &&
+                bucket[10] === 'enter'
+            ) {
+                $('.sky, .mother-nature').css('background-color', 'black');
+                $('.sun').css('background-color', 'white');
+                $('.cloud-1, .cloud-2').css('background-color', 'rgba(255,255,255,0.44)');
+                $('ul').css('color', 'black');
+
+            }
+        }
+
+
+
+
+
+    </script>
+    </body>
+</html>
